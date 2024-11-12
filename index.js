@@ -44,11 +44,13 @@ const argv = require('yargs')
     height: screenSizeH,
   });
 
+  console.log(`Navigating to URL: ${argv.url}`);
+  await page.goto(argv.url);
+
+
   page.addStyleTag({content: '.modal-wrapper.chili-modal-wrapper { display: none !important; } #onetrust-consent-sdk { display: none !important; }'});
   //page.addScriptTag({url: 'https://code.jquery.com/jquery-3.2.1.min.js'});
 
-  console.log(`Navigating to URL: ${argv.url}`);
-  await page.goto(argv.url);
 
   process.stdout.write('Taking screenshots: .');
   const screenshotPromises = [];
