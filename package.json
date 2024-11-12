@@ -1,10 +1,10 @@
 {
-  "name": "webgif",
+  "name": "webgif2",
   "version": "1.1.0",
   "description": "Easily generate animated GIFs from websites",
   "main": "index.js",
   "bin": {
-    "webgif": "./index.js"
+    "webgif2": "./index.js"
   },
   "scripts": {
     "test": "nyc -r text -r html -r lcov mocha",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anishkny/webgif.git"
+    "url": "git+https://github.com/crash13override/webgif2.git"
   },
   "keywords": [
     "gif",
@@ -25,9 +25,9 @@
   "author": "Anish Karandikar <anishkny@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anishkny/webgif/issues"
+    "url": "https://github.com/crash13override/webgif2/issues"
   },
-  "homepage": "https://github.com/anishkny/webgif#readme",
+  "homepage": "https://github.com/crash13override/webgif2#readme",
   "dependencies": {
     "gifencoder": "^1.1.0",
     "png-file-stream": "^1.0.0",
