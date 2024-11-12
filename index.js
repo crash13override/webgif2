@@ -7,8 +7,8 @@ const pngFileStream = require('png-file-stream');
 const puppeteer = require('puppeteer');
 const tempdir = require('tempdir');
 
-const screenSizeW = 1024;
-const screenSizeH = 1350;
+const screenSizeW = 1100;
+const screenSizeH = 1400;
 
 const argv = require('yargs')
   .alias('url', 'u').default('url', 'https://giphy.com/search/lol')
