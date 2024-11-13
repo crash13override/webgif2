@@ -15,6 +15,10 @@ const argv = require('yargs')
   .describe('url', 'URL to generate GIF from')
   .alias('duration', 'd').default('duration', 10)
   .describe('duration', 'GIF duration in frames')
+    .alias('screenW', 'w').default('screenW', 1280)
+    .describe('screenW', 'Screen Width in pixels')
+    .alias('screenH', 'h').default('screenH', 390)
+    .describe('screenH', 'Screen Height in pixels')
     .alias('delay', 'l').default('delay', 1000)
     .describe('delay', 'Initial delay in milliseconds')
     .alias('frames', 'f').default('frames', 150)
@@ -40,8 +44,8 @@ const argv = require('yargs')
   const workdir = await tempdir();
 
   page.setViewport({
-    width: screenSizeW,
-    height: screenSizeH,
+    width: argv.screenW,
+    height: argv.screenH,
   });
 
   console.log(`Navigating to URL: ${argv.url}`);
@@ -74,7 +78,7 @@ const argv = require('yargs')
   await Promise.all(screenshotPromises);
   if(argv.type == 'gif'){
     console.log(`\nEncoding GIF: ${argv.output}`);
-    const encoder = new GIFEncoder(screenSizeW, screenSizeH);
+    const encoder = new GIFEncoder(argv.screenW, argv.screenH);
     await pngFileStream(`temp/${argv.output}/T*png`)
         .pipe(encoder.createWriteStream({ repeat: 0, delay: argv.frames/4, quality: argv.quality }))
         .pipe(fs.createWriteStream(`${argv.output}.gif`));
