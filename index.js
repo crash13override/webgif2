@@ -31,7 +31,7 @@ const argv = require('yargs')
     .describe('type', 'Image output format (gif/png)')
   .alias('h', 'help')
   .alias('V', 'version')
-  .usage('webgif2 -u URL -d DURATION [-o OUTFILE] [-l DELAY] [-f FRAMES] [-q QUALITY] [-t TYPE]')
+  .usage('webgif2 -u URL -d DURATION [-o OUTFILE] [-l DELAY] [-f FRAMES] [-q QUALITY] [-t TYPE] [-w WIDTH] [-h HEIGHT]')
   .version()
   .argv;
 
