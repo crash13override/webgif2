@@ -25,6 +25,8 @@ const argv = require('yargs')
     .describe('frames', 'Frames duration in milliseconds')
     .alias('quality', 'q').default('quality', 25)
     .describe('quality', 'Image quality')
+    .alias('speed', 's').default('speed', 2)
+    .describe('speed', 'Speed divider for GIF generation')
   .alias('output', 'o').default('output', `${process.cwd()}${require('path').sep}web.gif`)
   .describe('output', 'Output file name')
     .alias('type', 't').default('type', 'gif')
@@ -80,7 +82,7 @@ const argv = require('yargs')
     console.log(`\nEncoding GIF: ${argv.output}`);
     const encoder = new GIFEncoder(argv.screenW, argv.screenH);
     await pngFileStream(`temp/${argv.output}/T*png`)
-        .pipe(encoder.createWriteStream({ repeat: 0, delay: Math.round(argv.frames/2), quality: argv.quality }))
+        .pipe(encoder.createWriteStream({ repeat: 0, delay: Math.round(argv.frames/argv.speed), quality: argv.quality }))
         .pipe(fs.createWriteStream(`${argv.output}.gif`));
   }
   await page.close();
